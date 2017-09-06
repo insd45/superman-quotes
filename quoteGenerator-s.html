@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Random Qoute Generator</title>
+        <style>
+            #displayBox {
+                border: solid black 2px;
+                background-color: white;
+                border-radius: 5px;
+                position: relative;
+                width: 450px;
+                margin: 50px auto auto auto;
+                padding: 50px 40px;
+            }
+            
+            #back {
+                background-color: gray;
+            }
+            
+            #newbutton {
+                float: right;
+                padding-bottom: 5px;
+                border-radius: 3px;
+                color: white;
+                background-color: gray;
+            }
+            
+            #tweetbutton {
+                float: left;
+                padding-bottom: 5px;
+                border-radius: 3px;
+                color: white;
+                background-color: gray;
+            }
+            
+            #footer {
+                
+            }
+        </style>
+    </head>
+    <body id="back">
+        <div id="displayBox">
+            <!--<h1>Simple Quote Generator</h1>-->
+            <div id="quotebox">
+                <p>Click to display a quote</p>
+            </div>
+            <div id="sourcebox">
+                <p>Click to display an author</p>
+            </div>
+            <!--<button id="tweetbutton" onclick="tweetMe()">Tweet this quote</button>-->
+            <a id="tweetbutton" href="https://twitter.com/intent/tweet?button_hashtag=SupermanQuotes" class="twitter-hashtag-button" data-show-count="false">Tweet #SupermannQuotes</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <button id="newbutton" onclick="newQuote()">New Quote</button>
+        </div>
+        <script>
+            var quotes = ["\"What makes Superman a hero is not that he has power, but that he has the wisdom and the maturity to use the power wisely. From an acting point of view, that's how I approached the part.\"", "\"Anyone can be a Superman, but nobody can be Jackie Chan.\"", "\"If I had to choose a superhero to be, I would pick Superman. He's everything that I'm not.\"", "\"For a lot of people, Superman is and has always been America's hero. He stands for what we believe is the best within us: limitless strength tempered by compassion, that can bear adversity and emerge stronger on the other side. He stands for what we all feel we would like to be able to stand for, when standing is hardest.\"", "\"Batman and Superman are very different characters but they're both iconic and elemental. Finding the right story for them both is the key.\"", "\"This character matters so much to so many people. I want to get that right. I want to do it justice. I want people to believe in the character and have faith in the character and kids to grow up wanting to be Superman. Or, God forbid, there's people who are going through hardship and wishing that this character would turn up and save them.\"", "\"Certainly, for younger guys, Superman is this mythological character that they've thought about and explored in their imaginations... But one thing I really like about Superman fans is that they're so open-minded and excited and honest. There's something beautiful about their enjoyment of it - something very Superman-like.\"", "\"It is a remarkable dichotomy. In many ways, Clark is the most human of us all. Then... he shoots fire from the skies, and it is difficult not to think of him as a god. And how fortunate we all are that it does not occur to him.\"","\"Dreams save us. Dreams lift us up and transform us. And on my soul I swear until my dream of a world where dignity, honour and justice becomes the reality we all share, I'll never stop fighting. Ever.\"", "\"Do good to others and every man can be a Superman.\""];
+            
+            var qSource = ["Christopher Reeve", "Jackie Chan", "Stephen Hawking", "J. Michael Straczynski", "Christopher Nolan", "Henry Cavill", "Henry Cavill", "Batman", "Superman", "Superman"];
+            var colors = ["paleturquoise", "palegoldenrod", "deepskyblue", "palevioletred", "palegreen", "peachpuff", "lemonchiffon", "lightcoral", "lightsalmon", "navajowhite"];
+            var currentQuote = "";
+            var currentAuthor = "";
+            function newQuote() {
+                var randIndex = Math.floor(Math.random() * (quotes.length));
+                document.getElementById("quotebox").innerHTML = "<p>" + quotes[randIndex] + "</p>";
+                currentQuote = quotes[randIndex];
+                document.getElementById("sourcebox").innerHTML = "<p>-" + qSource[randIndex] + "</p>";
+                currentAuthor = qSource[randIndex];
+                document.getElementById("back").style.backgroundColor = colors[randIndex];
+                document.getElementById("newbutton").style.backgroundColor = colors[randIndex];
+                document.getElementById("tweetbutton").style.backgroundColor = colors[randIndex];
+            }
+            
+            function tweetMe() {
+                //if(!inIframe()) {
+                  //  openURL('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent(document.getElementById("quotebox").innerHTML + ' -' + document.getElementById("sourcebox").innerHTML));
+                //} 
+                document.getElementById("back").style.backgroundColor = "black";
+            }
+        </script>
+    </body>
+</html>
